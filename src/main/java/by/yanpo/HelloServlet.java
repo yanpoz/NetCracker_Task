@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class HelloServlet extends HttpServlet {
 
-    Connection con;
+    private Connection con;
 
     private static final String URL = "jdbc:mysql://localhost:3306/schem_devcolibri"+
             "?verifyServerCertificate=false"+
@@ -23,7 +23,7 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws IOException, ServletException {
+    throws IOException {
 
         //PrintWriter writer = response.getWriter();
         //writer.print("Hello from Servlet AGAIN");
@@ -50,12 +50,14 @@ public class HelloServlet extends HttpServlet {
             ResultSet ResSet = stat.executeQuery(Select);
 
             out.println("<html>");
-            out.println("<head><title>Hello Servlet</title></head>");
+            out.println("<head><title>Hello Servlet</title>" +
+                    "<link rel='stylesheet' href='style.css'>"+
+                    "</head>");
             out.println("<body>");
             out.println("<h1>list of Users</h1>"+"\n");
 
             out.println(
-               "<table border='1' cellpadding='5' cellspacing='1' >"+
+               "<table>"+
                "<tr>"+
                "   <th>Name</th>"+
                "   <th>Age</th>"+
@@ -64,20 +66,21 @@ public class HelloServlet extends HttpServlet {
                "   <th>Delete</th>"+
                "</tr>");
 
-            int id;
+            //int id;
             String name, age, email;
             while (ResSet.next()){
-                id = ResSet.getInt(1);
+                //id = ResSet.getInt(1);
                 name = ResSet.getString(2);
                 age = ResSet.getString(3);
                 email = ResSet.getString(4);
 
                 out.println(
                     "<tr>"+
-                        "<td>"+id+"</td>"+
                         "<td>"+name+"</td>"+
                         "<td>"+age+"</td>"+
                         "<td>"+email+"</td>"+
+                        "<td>"+"edit"+"</td>"+
+                        "<td>"+"delete"+"</td>"+
                     "</tr>");
             }
 

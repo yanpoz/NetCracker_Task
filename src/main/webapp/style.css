@@ -1,0 +1,27 @@
+body {
+    background: #edeef0;
+    font-family: roboto;
+    color: #42648b;
+}
+
+table {
+       background-color: #ffffff;
+       margin: auto;
+       border-radius: 5px;
+       width: 550px;
+       padding-left: 20px;
+       padding-right: 20px;
+}
+
+tr {
+    border-bottom: 2px solid grey;
+}
+
+td, th {
+    height: 111px;
+    border-bottom: 2px solid grey;
+}
+
+tr.border_bottom td {
+    border-bottom: 1pt solid black;
+}
