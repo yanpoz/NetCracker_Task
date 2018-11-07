@@ -6,9 +6,8 @@ body {
 
 table {
        background-color: #ffffff;
-       margin: auto;
-       border-radius: 5px;
        width: 550px;
+       margin: auto;
        padding-left: 20px;
        padding-right: 20px;
 }
