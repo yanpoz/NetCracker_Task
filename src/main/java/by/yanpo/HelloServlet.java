@@ -49,13 +49,12 @@ public class HelloServlet extends HttpServlet {
             String Select = "select * from users;";
             ResultSet ResSet = stat.executeQuery(Select);
 
-            out.println("<html>");
-            out.println("<head><title>Hello Servlet</title>" +
+            out.println("<html>"+
+                    "<head><title>Hello Servlet</title>" +
                     "<link rel='stylesheet' href='style.css'>"+
-                    "</head>");
-            out.println("<body>");
-            out.println("<h1>list of Users</h1>"+"\n");
-
+                    "</head>"+
+                    "<body>"+
+                    "<h1>list of Users</h1>"+"\n");
             out.println(
                "<table>"+
                "<tr>"+
@@ -84,10 +83,9 @@ public class HelloServlet extends HttpServlet {
                     "</tr>");
             }
 
-            out.println("</table>");
-
-            out.println("</body>");
-            out.println("<html>");
+            out.println("</table>"+
+                    "</body>"+
+                    "<html>");
 
             con.close();
         }
