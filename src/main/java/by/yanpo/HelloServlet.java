@@ -68,7 +68,7 @@ public class HelloServlet extends HttpServlet {
             //int id;
             String name, age, email;
             while (ResSet.next()){
-                //id = ResSet.getInt(1);
+                int id = ResSet.getInt(1);
                 name = ResSet.getString(2);
                 age = ResSet.getString(3);
                 email = ResSet.getString(4);
@@ -78,7 +78,9 @@ public class HelloServlet extends HttpServlet {
                         "<td>"+name+"</td>"+
                         "<td>"+age+"</td>"+
                         "<td>"+email+"</td>"+
-                        "<td>"+"edit"+"</td>"+
+                        "<td>"+
+                            "<a href='post.html?id="+
+                            id+"'>Edit</a>"+"</td>"+
                         "<td>"+"delete"+"</td>"+
                     "</tr>");
             }
