@@ -1,14 +1,11 @@
 package by.yanpo;//package main;
 
-import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.*;
 
 public class HelloServlet extends HttpServlet {
-
-    private Connection con;
 
     private static final String URL = "jdbc:mysql://localhost:3306/schem_devcolibri"+
             "?verifyServerCertificate=false"+
@@ -29,12 +26,12 @@ public class HelloServlet extends HttpServlet {
         //writer.print("Hello from Servlet AGAIN");
         ServletOutputStream out = response.getOutputStream();
 
-        String x = request.getParameter("x");
+        String x = request.getParameter("id");
         System.out.println(x);
 
         try {
 
-            con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
             if (!con.isClosed()) {
                 System.out.println();
@@ -79,7 +76,7 @@ public class HelloServlet extends HttpServlet {
                         "<td>"+age+"</td>"+
                         "<td>"+email+"</td>"+
                         "<td>"+
-                            "<a href='post.html?id="+
+                            "<a href='edit.jsp?id="+
                             id+"'>Edit</a>"+"</td>"+
                         "<td>"+"delete"+"</td>"+
                     "</tr>");
@@ -97,5 +94,10 @@ public class HelloServlet extends HttpServlet {
             System.err.println("SQLState: "+e.getSQLState());
             e.printStackTrace();
         }
+    }
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws IOException {
+        doGet(request, response);
     }
 }
