@@ -4,7 +4,7 @@
     <body>
         <h2>Hello World! From JSP</h2>
         <br/>
-        <a href="servlet?id=iAmParam >^.^<">Click here to see servlet</a>
+        <a href="servlet?id=0">Click here to see servlet</a>
         <br/>
         <h2>
             Now is

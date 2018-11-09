@@ -26,22 +26,36 @@ public class HelloServlet extends HttpServlet {
         //writer.print("Hello from Servlet AGAIN");
         ServletOutputStream out = response.getOutputStream();
 
-        String x = request.getParameter("id");
-        System.out.println(x);
-
         try {
 
             Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
             if (!con.isClosed()) {
-                System.out.println();
-                System.out.println("***Connection is OK***");
+                System.out.println("\n***Connection is OK***");
             }
 
             Statement stat = con.createStatement();
+
             //String Insert = "insert into users (name, age, email) values('Cain', 19, 'cain@mail.com');";
             //int res = stat.executeUpdate(Insert);
             //System.out.println(res);
+
+            int id, age;
+            String name;
+            String email;
+            if (!request.getParameter("id").equals("0")) {
+                id = Integer.parseInt(request.getParameter("id"));
+                name = request.getParameter("name");
+                age = Integer.parseInt(request.getParameter("age"));
+                email = request.getParameter("email");
+
+                String Update = "update users set " +
+                        "name = '"+ name +
+                        "', age = "+ age +
+                        ", email = '"+ email +
+                        "' where id = "+ id +";";
+                stat.executeUpdate(Update);
+            }
 
             String Select = "select * from users;";
             ResultSet ResSet = stat.executeQuery(Select);
@@ -62,12 +76,11 @@ public class HelloServlet extends HttpServlet {
                "   <th>Delete</th>"+
                "</tr>");
 
-            //int id;
-            String name, age, email;
+            //String name, age, email;
             while (ResSet.next()){
-                int id = ResSet.getInt(1);
+                id = ResSet.getInt(1);
                 name = ResSet.getString(2);
-                age = ResSet.getString(3);
+                age = ResSet.getInt(3);
                 email = ResSet.getString(4);
 
                 out.println(
@@ -82,7 +95,11 @@ public class HelloServlet extends HttpServlet {
                     "</tr>");
             }
 
-            out.println("</table>"+
+            out.println(
+                    "<tr><td  colspan='5'>"+
+                        "<a href='edit.jsp?id="+
+                        0+"'>Add New</a></td></tr>"+
+                    "</table>"+
                     "</body>"+
                     "<html>");
 
