@@ -6,7 +6,7 @@
     <link rel='stylesheet' href='style.css'>
 </head>
 <body>
-<form action="servlet?id=<%= request.getParameter("id")%>" method="POST">
+<form action="edit?id=<%= request.getParameter("id")%>" method="POST">
     Name: <input type="text" name="name">
     <br/>
     Ade: <input type="text" name="age"/>

@@ -23,7 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="d637d101-53f4-45c8-98b0-3eb04a58db54">
+        <schema name="schem_devcolibri" object-types="column, function, table, view" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="d637d101-53f4-45c8-98b0-3eb04a58db54">

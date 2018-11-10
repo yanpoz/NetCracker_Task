@@ -39,7 +39,7 @@ public class HelloServlet extends HttpServlet {
             int id, age;
             String name;
             String email;
-            if (!request.getParameter("id").equals("0")) {
+            /*if (!request.getParameter("id").equals("0")) {
 
                 id = Integer.parseInt(request.getParameter("id"));
                 name = request.getParameter("name");
@@ -52,10 +52,10 @@ public class HelloServlet extends HttpServlet {
                         ", email = '"+ email +
                         "' where id = "+ id +";";
                 stat.executeUpdate(Update);
-            }
+            }*/
 
 
-                String Select = "select * from users;";
+            String Select = "select * from users;";
             ResultSet ResSet = stat.executeQuery(Select);
 
             out.println("<html>"+
