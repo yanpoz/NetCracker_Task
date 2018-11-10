@@ -22,28 +22,25 @@ public class HelloServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws IOException {
 
-        //PrintWriter writer = response.getWriter();
-        //writer.print("Hello from Servlet AGAIN");
         ServletOutputStream out = response.getOutputStream();
 
         try {
 
             Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-            if (!con.isClosed()) {
+            if (!con.isClosed())
                 System.out.println("\n***Connection is OK***");
-            }
 
             Statement stat = con.createStatement();
 
             //String Insert = "insert into users (name, age, email) values('Cain', 19, 'cain@mail.com');";
             //int res = stat.executeUpdate(Insert);
-            //System.out.println(res);
 
             int id, age;
             String name;
             String email;
             if (!request.getParameter("id").equals("0")) {
+
                 id = Integer.parseInt(request.getParameter("id"));
                 name = request.getParameter("name");
                 age = Integer.parseInt(request.getParameter("age"));
@@ -57,7 +54,8 @@ public class HelloServlet extends HttpServlet {
                 stat.executeUpdate(Update);
             }
 
-            String Select = "select * from users;";
+
+                String Select = "select * from users;";
             ResultSet ResSet = stat.executeQuery(Select);
 
             out.println("<html>"+
@@ -91,7 +89,9 @@ public class HelloServlet extends HttpServlet {
                         "<td>"+
                             "<a href='edit.jsp?id="+
                             id+"'>Edit</a>"+"</td>"+
-                        "<td>"+"delete"+"</td>"+
+                        "<td>"+
+                            "<a href='servlet?id="+
+                            0+"'>Delete</a>"+"</td>"+
                     "</tr>");
             }
 

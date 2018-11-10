@@ -1,12 +1,10 @@
 body {
     background: white;
     font-family: roboto;
-    color: #42648b;
     text-align: center;
 }
 
 table {
-       background-color: white;
        width: 550px;
        margin: auto;
        padding-left: 20px;
@@ -17,10 +15,20 @@ table {
 }
 
 tr {
-    border-bottom: 2px solid grey;
+    height: 111px;
 }
 
-td, th {
-    height: 111px;
-    border-bottom: 1px solid #dcdcdc;
+form, div {
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 270px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left!important;
+    box-shadow: 8px 5px 23px #888888;
+}
+
+input {
+    margin: 20px;
 }
