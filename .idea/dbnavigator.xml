@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="d637d101-53f4-45c8-98b0-3eb04a58db54">
-        <schema name="schem_devcolibri" object-types="column, function, table, view" />
+        <schema name="schem_devcolibri" object-types="column, constraint, function, index, procedure, table, dataset trigger, view" />
       </connection>
     </loaded-nodes>
   </component>

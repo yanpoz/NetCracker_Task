@@ -37,23 +37,7 @@ public class HelloServlet extends HttpServlet {
             //int res = stat.executeUpdate(Insert);
 
             int id, age;
-            String name;
-            String email;
-            /*if (!request.getParameter("id").equals("0")) {
-
-                id = Integer.parseInt(request.getParameter("id"));
-                name = request.getParameter("name");
-                age = Integer.parseInt(request.getParameter("age"));
-                email = request.getParameter("email");
-
-                String Update = "update users set " +
-                        "name = '"+ name +
-                        "', age = "+ age +
-                        ", email = '"+ email +
-                        "' where id = "+ id +";";
-                stat.executeUpdate(Update);
-            }*/
-
+            String name, email;
 
             String Select = "select * from users;";
             ResultSet ResSet = stat.executeQuery(Select);
@@ -74,7 +58,6 @@ public class HelloServlet extends HttpServlet {
                "   <th>Delete</th>"+
                "</tr>");
 
-            //String name, age, email;
             while (ResSet.next()){
                 id = ResSet.getInt(1);
                 name = ResSet.getString(2);
@@ -90,8 +73,8 @@ public class HelloServlet extends HttpServlet {
                             "<a href='edit.jsp?id="+
                             id+"'>Edit</a>"+"</td>"+
                         "<td>"+
-                            "<a href='servlet?id="+
-                            0+"'>Delete</a>"+"</td>"+
+                            "<a href='delete.jsp?id="+
+                            id+"'>Delete</a>"+"</td>"+
                     "</tr>");
             }
 

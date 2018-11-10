@@ -1,13 +1,15 @@
 package by.yanpo;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class Edit extends HttpServlet {
+public class Delete extends HttpServlet {
 
     private static final String URL = "jdbc:mysql://localhost:3306/schem_devcolibri"+
             "?verifyServerCertificate=false"+
@@ -33,22 +35,15 @@ public class Edit extends HttpServlet {
 
             Statement stat = con.createStatement();
 
-            int id, age;
-            String name;
-            String email;
+            int id;
             if (!request.getParameter("id").equals("0")) {
 
                 id = Integer.parseInt(request.getParameter("id"));
-                name = request.getParameter("name");
-                age = Integer.parseInt(request.getParameter("age"));
-                email = request.getParameter("email");
 
-                String Update = "update users set " +
-                        "name = '"+ name +
-                        "', age = "+ age +
-                        ", email = '"+ email +
-                        "' where id = "+ id +";";
-                stat.executeUpdate(Update);
+                String Delete = "delete from users where id = " +
+                        id + ";";
+
+                stat.executeUpdate(Delete);
             }
 
             con.close();
