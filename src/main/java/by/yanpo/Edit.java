@@ -36,12 +36,13 @@ public class Edit extends HttpServlet {
             int id, age;
             String name;
             String email;
-            if (!request.getParameter("id").equals("0")) {
 
-                id = Integer.parseInt(request.getParameter("id"));
-                name = request.getParameter("name");
-                age = Integer.parseInt(request.getParameter("age"));
-                email = request.getParameter("email");
+            id = Integer.parseInt(request.getParameter("id"));
+            name = request.getParameter("name");
+            age = Integer.parseInt(request.getParameter("age"));
+            email = request.getParameter("email");
+
+            if (id!=0) {
 
                 String Update = "update users set " +
                         "name = '"+ name +
@@ -49,6 +50,11 @@ public class Edit extends HttpServlet {
                         ", email = '"+ email +
                         "' where id = "+ id +";";
                 stat.executeUpdate(Update);
+            } else {
+
+                String Insert = "insert into users (name, age, email) values('"+
+                        name+"', "+age+", '"+email+"');";
+                stat.executeUpdate(Insert);
             }
 
             con.close();

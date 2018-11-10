@@ -33,12 +33,6 @@ public class HelloServlet extends HttpServlet {
 
             Statement stat = con.createStatement();
 
-            //String Insert = "insert into users (name, age, email) values('Cain', 19, 'cain@mail.com');";
-            //int res = stat.executeUpdate(Insert);
-
-            int id, age;
-            String name, email;
-
             String Select = "select * from users;";
             ResultSet ResSet = stat.executeQuery(Select);
 
@@ -57,6 +51,9 @@ public class HelloServlet extends HttpServlet {
                "   <th>Edit</th>"+
                "   <th>Delete</th>"+
                "</tr>");
+
+            int id, age;
+            String name, email;
 
             while (ResSet.next()){
                 id = ResSet.getInt(1);
