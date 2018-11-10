@@ -6,9 +6,9 @@
     </head>
     <body>
     <div>
-        <h2>Hello World! From JSP</h2>
+        <h2>Hello User!</h2>
         <br/>
-        <a href="servlet?id=0">Click here to see servlet</a>
+        <a href="servlet?id=0">Click here to see users</a>
         <br/>
         <h2>
             Now is
