@@ -1,11 +1,13 @@
 package by.yanpo;//package main;
 
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
-public class HelloServlet extends HttpServlet {
+public class Projects_view extends HttpServlet {
 
     private static final String URL = "jdbc:mysql://localhost:3306/schem_devcolibri"+
             "?verifyServerCertificate=false"+
@@ -33,39 +35,40 @@ public class HelloServlet extends HttpServlet {
 
             Statement stat = con.createStatement();
 
-            String Select = "select * from users;";
+            String Select = "select projects.id, projects.name,  projects.progress, " +
+            "users.name as Lider from projects join users on projects.team_lider = users.id;";
             ResultSet ResSet = stat.executeQuery(Select);
 
             out.println("<html>"+
-                    "<head><title>Users</title>" +
+                    "<head><title>Projects</title>" +
                     "<link rel='stylesheet' href='style.css'>"+
                     "</head>"+
                     "<body>"+
-                    "<h1>list of Users</h1>"+"\n");
+                    "<h1>list of Projects</h1>"+"\n");
             out.println(
                "<table>"+
                "<tr>"+
                "   <th>Name</th>"+
-               "   <th>Age</th>"+
-               "   <th>Email</th>"+
+               "   <th>Progress</th>"+
+               "   <th>Team lider</th>"+
                "   <th>Edit</th>"+
                "   <th>Delete</th>"+
                "</tr>");
 
-            int id, age;
-            String name, email;
+            int id, prog;
+            String name, lider;
 
             while (ResSet.next()){
                 id = ResSet.getInt(1);
                 name = ResSet.getString(2);
-                age = ResSet.getInt(3);
-                email = ResSet.getString(4);
+                prog = ResSet.getInt(3);
+                lider = ResSet.getString(4);
 
                 out.println(
                     "<tr>"+
                         "<td>"+name+"</td>"+
-                        "<td>"+age+"</td>"+
-                        "<td>"+email+"</td>"+
+                        "<td>"+prog+"</td>"+
+                        "<td>"+lider+"</td>"+
                         "<td>"+
                             "<a href='edit.jsp?id="+
                             id+"'>Edit</a>"+"</td>"+

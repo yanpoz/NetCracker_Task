@@ -21,6 +21,11 @@
     <servlet-class>by.yanpo.Delete</servlet-class>
   </servlet>
 
+  <servlet>
+      <servlet-name>Projects</servlet-name>
+      <servlet-class>by.yanpo.Projects_view</servlet-class>
+  </servlet>
+
   <!-- Defines the path to access this Servlet -->
   <servlet-mapping>
     <servlet-name>HelloServlet</servlet-name>
@@ -35,6 +40,11 @@
   <servlet-mapping>
     <servlet-name>Delete</servlet-name>
     <url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Projects_view</servlet-name>
+    <url-pattern>/projects</url-pattern>
   </servlet-mapping>
 
   <welcome-file-list>
