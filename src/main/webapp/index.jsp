@@ -9,6 +9,9 @@
         <h2>Hello User!</h2>
         <br/>
         <a href="servlet?id=0">Click here to see users</a>
+        <br/>
+        <br/>
+        <br/>
         <a href="projects?id=0">And projects</a>
         <br/>
         <h2>

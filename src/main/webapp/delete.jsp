@@ -12,7 +12,7 @@
 <table>
     <tr>
         <td>
-        <a href="delete?id=<%= request.getParameter("id")%>">Delete</a></td>
+        <a href="delete?id=<%= request.getParameter("id")%>&tabl=<%= request.getParameter("tabl")%>">Delete</a></td>
         <td>
         <a href="servlet?id=0">Cancel</a></td>
     </tr>

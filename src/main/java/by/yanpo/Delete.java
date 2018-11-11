@@ -35,13 +35,15 @@ public class Delete extends HttpServlet {
 
             Statement stat = con.createStatement();
 
-            int id;
-            if (!request.getParameter("id").equals("0")) {
+            String id = request.getParameter("id");
+            String table = request.getParameter("tabl");
+            System.out.println(table);
 
-                id = Integer.parseInt(request.getParameter("id"));
+            if (!id.equals("0")) {
 
-                String Delete = "delete from users where id = " +
-                        id + ";";
+                String Delete = "delete from "+table+
+                        " where id = " + id + ";";
+                System.out.println(Delete);
 
                 stat.executeUpdate(Delete);
             }
@@ -49,7 +51,7 @@ public class Delete extends HttpServlet {
             con.close();
 
             response.setStatus(response.SC_MOVED_PERMANENTLY);
-            response.setHeader("Location", "servlet?id=0");
+            response.setHeader("Location", "index.jsp");
         }
         catch (SQLException e) {
             System.err.println();

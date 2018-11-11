@@ -43,7 +43,7 @@
   </servlet-mapping>
 
   <servlet-mapping>
-    <servlet-name>Projects_view</servlet-name>
+    <servlet-name>Projects</servlet-name>
     <url-pattern>/projects</url-pattern>
   </servlet-mapping>
 

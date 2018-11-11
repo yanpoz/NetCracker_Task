@@ -71,7 +71,7 @@ public class HelloServlet extends HttpServlet {
                             id+"'>Edit</a>"+"</td>"+
                         "<td>"+
                             "<a href='delete.jsp?id="+
-                            id+"'>Delete</a>"+"</td>"+
+                            id+"&tabl=users'>Delete</a>"+"</td>"+
                     "</tr>");
             }
 

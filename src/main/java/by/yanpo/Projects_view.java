@@ -74,7 +74,7 @@ public class Projects_view extends HttpServlet {
                             id+"'>Edit</a>"+"</td>"+
                         "<td>"+
                             "<a href='delete.jsp?id="+
-                            id+"'>Delete</a>"+"</td>"+
+                            id+"&tabl=projects'>Delete</a>"+"</td>"+
                     "</tr>");
             }
 
