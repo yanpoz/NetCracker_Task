@@ -21,6 +21,7 @@ public class Delete extends HttpServlet {
 
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
+    private static String SQL;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,11 +42,11 @@ public class Delete extends HttpServlet {
 
             if (!id.equals("0")) {
 
-                String Delete = "delete from "+table+
+                SQL = "delete from "+table+
                         " where id = " + id + ";";
-                System.out.println(Delete);
+                System.out.println(SQL);
 
-                stat.executeUpdate(Delete);
+                stat.executeUpdate(SQL);
             }
 
             con.close();

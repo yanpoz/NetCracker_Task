@@ -6,9 +6,7 @@
     <link rel='stylesheet' href='style.css'>
 </head>
 <body>
-
 <h1>Are you sure ?</h1>
-
 <table>
     <tr>
         <td>

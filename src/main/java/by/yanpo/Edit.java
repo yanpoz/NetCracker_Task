@@ -1,6 +1,5 @@
 package by.yanpo;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +18,7 @@ public class Edit extends HttpServlet {
 
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
+    private static String SQL;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,34 +33,53 @@ public class Edit extends HttpServlet {
 
             Statement stat = con.createStatement();
 
-            int id, age;
-            String name;
-            String email;
+            //String SQL;
+            String table = request.getParameter("tabl");
 
-            id = Integer.parseInt(request.getParameter("id"));
-            name = request.getParameter("name");
-            age = Integer.parseInt(request.getParameter("age"));
-            email = request.getParameter("email");
 
-            if (id!=0) {
 
-                String Update = "update users set " +
-                        "name = '"+ name +
-                        "', age = "+ age +
-                        ", email = '"+ email +
-                        "' where id = "+ id +";";
-                stat.executeUpdate(Update);
-            } else {
+            if (table.equals("users")) {
+                String id = request.getParameter("id");
+                String name = request.getParameter("name");
+                String age = request.getParameter("age");
+                String email = request.getParameter("email");
 
-                String Insert = "insert into users (name, age, email) values('"+
-                        name+"', "+age+", '"+email+"');";
-                stat.executeUpdate(Insert);
+                if (id.equals("0")) {
+                    SQL = "insert into "+ table +" (name, age, email) values('"+
+                            name+"', "+age+", '"+email+"');";
+                } else {
+                    SQL = "update "+ table +" set " +
+                            "name = '"+ name +
+                            "', age = "+ age +
+                            ", email = '"+ email +
+                            "' where id = "+ id +";";
+                }
+            } else
+
+            if (table.equals("projects")){
+                String id = request.getParameter("id");
+                String name = request.getParameter("name");
+                String progress = request.getParameter("progress");
+                String lider = request.getParameter("lider");
+
+                if (id.equals("0")) {
+                    SQL = "insert into "+ table +" (name, progress, team_lider) values('"+
+                            name+"', "+progress+", '"+lider+"');";
+                } else {
+                    SQL = "update "+ table +" set " +
+                            "name = '"+ name +
+                            "', progress = "+ progress +
+                            ", team_lider = '"+ lider +
+                            "' where id = "+ id +";";
+                }
             }
+            System.out.println(SQL);
+            stat.executeUpdate(SQL);
 
             con.close();
 
             response.setStatus(response.SC_MOVED_PERMANENTLY);
-            response.setHeader("Location", "servlet?id=0");
+            response.setHeader("Location", "index.jsp");
         }
         catch (SQLException e) {
             System.err.println();

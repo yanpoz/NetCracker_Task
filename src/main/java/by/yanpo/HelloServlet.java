@@ -1,7 +1,9 @@
 package by.yanpo;//package main;
 
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
@@ -67,8 +69,8 @@ public class HelloServlet extends HttpServlet {
                         "<td>"+age+"</td>"+
                         "<td>"+email+"</td>"+
                         "<td>"+
-                            "<a href='edit.jsp?id="+
-                            id+"'>Edit</a>"+"</td>"+
+                            "<a href='edit_user.jsp?id="+
+                            id+"&tabl=users'>Edit</a>"+"</td>"+
                         "<td>"+
                             "<a href='delete.jsp?id="+
                             id+"&tabl=users'>Delete</a>"+"</td>"+
@@ -77,8 +79,9 @@ public class HelloServlet extends HttpServlet {
 
             out.println(
                     "<tr><td  colspan='5'>"+
-                        "<a href='edit.jsp?id="+
-                        0+"'>Add New</a></td></tr>"+
+                        "<a href='edit_user.jsp?id="+
+                        0+"&tabl=users'>" +
+                        "Add New</a></td></tr>"+
                     "</table>"+
                     "</body>"+
                     "<html>");

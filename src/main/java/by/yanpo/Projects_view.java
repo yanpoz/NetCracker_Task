@@ -70,18 +70,20 @@ public class Projects_view extends HttpServlet {
                         "<td>"+prog+"</td>"+
                         "<td>"+lider+"</td>"+
                         "<td>"+
-                            "<a href='edit.jsp?id="+
-                            id+"'>Edit</a>"+"</td>"+
+                            "<a href='edit_proj.jsp?id="+
+                            id+"&tabl=projects'>Edit</a>"+"</td>"+
                         "<td>"+
                             "<a href='delete.jsp?id="+
-                            id+"&tabl=projects'>Delete</a>"+"</td>"+
+                            id+"&tabl=projects'>" +
+                            "Delete</a>"+"</td>"+
                     "</tr>");
             }
 
             out.println(
                     "<tr><td  colspan='5'>"+
-                        "<a href='edit.jsp?id="+
-                        0+"'>Add New</a></td></tr>"+
+                        "<a href='edit_proj.jsp?id="+
+                        0+"&tabl=projects'>" +
+                        "Add New</a></td></tr>"+
                     "</table>"+
                     "</body>"+
                     "<html>");
