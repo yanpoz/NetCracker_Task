@@ -43,7 +43,8 @@ public class HelloServlet extends HttpServlet {
                     "<link rel='stylesheet' href='style.css'>"+
                     "</head>"+
                     "<body>"+
-                    "<h1>list of Users</h1>"+"\n");
+                    "</br>"+
+                    "<h1>Users&emsp;&emsp;&emsp;<a href='projects?id=0'>Projects</a></h1>");
             out.println(
                "<table>"+
                "<tr>"+

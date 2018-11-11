@@ -44,7 +44,8 @@ public class Projects_view extends HttpServlet {
                     "<link rel='stylesheet' href='style.css'>"+
                     "</head>"+
                     "<body>"+
-                    "<h1>list of Projects</h1>"+"\n");
+                    "</br>"+
+                    "<h1><a href='servlet?id=0'>Users</a>&emsp;&emsp;&emsp;Projects</h1>");
             out.println(
                "<table>"+
                "<tr>"+
